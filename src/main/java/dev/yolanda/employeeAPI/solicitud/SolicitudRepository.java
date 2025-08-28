@@ -1,5 +1,7 @@
 package dev.yolanda.employeeAPI.solicitud;
 
-public interface SolicitudRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface SolicitudRepository extends JpaRepository<SolicitudEntity, Long>{
 
 }
