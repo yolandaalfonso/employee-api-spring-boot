@@ -1,19 +1,27 @@
 package dev.yolanda.employeeAPI.solicitud;
 
-import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-public class SolicitudController {
-    
-    @GetMapping("solicitudes")
-    public SolicitudEntity index() {
+import dev.yolanda.employeeAPI.implementations.IGenericService;
 
-        SolicitudEntity solicitud1 = new SolicitudEntity("Maria", LocalDate.of(2025, 8, 27), "vacaciones", "petición de vacaciones");
+@RestController
+@RequestMapping(path = "${api-endpoint}/solicitudes")
+public class SolicitudController {
+
+    private final IGenericService<SolicitudEntity> service;
+
+    public SolicitudController(IGenericService<SolicitudEntity> service) {
+        this.service = service;
+    }
+
+    @GetMapping("")
+    public List<SolicitudEntity> index() {
 
         // class -> json = serializar . json -> class = deserializar
-        return solicitud1;
+        return service.getEntities();
     }
 }
