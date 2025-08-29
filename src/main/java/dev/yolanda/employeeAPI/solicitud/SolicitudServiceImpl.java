@@ -20,4 +20,9 @@ public class SolicitudServiceImpl implements IGenericService<SolicitudEntity>{
         return repository.findAll();
     }
 
+    @Override
+    public SolicitudEntity saveEntity(SolicitudEntity solicitud) {
+        return repository.save(solicitud);
+    }
+
 }
