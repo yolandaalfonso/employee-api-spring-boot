@@ -33,6 +33,10 @@ public class SolicitudEntity {
         this.description = description;
     }
 
+    public Long getId() {
+        return id;
+    }
+
 
     public String getApplicantName() {
         return applicantName;
