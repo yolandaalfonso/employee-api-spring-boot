@@ -2,7 +2,8 @@ package dev.yolanda.employeeAPI.implementations;
 
 import java.util.List;
 
-public interface IGenericService<T> {
+public interface IGenericService<T, S> {
     public List<T> getEntities();
-    T saveEntity(T entity);
+    public T storeEntity(S dto);
+    //public T showById(Long id);
 }
