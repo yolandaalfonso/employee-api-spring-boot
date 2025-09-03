@@ -26,7 +26,8 @@ public class SolicitudEntity {
     }
 
 
-    public SolicitudEntity(String applicantName, LocalDate applicationDate, String subject, String description) {
+    public SolicitudEntity(Long id, String applicantName, LocalDate applicationDate, String subject, String description) {
+        this.id = id;
         this.applicantName = applicantName;
         this.applicationDate = applicationDate;
         this.subject = subject;
@@ -35,6 +36,10 @@ public class SolicitudEntity {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
 
