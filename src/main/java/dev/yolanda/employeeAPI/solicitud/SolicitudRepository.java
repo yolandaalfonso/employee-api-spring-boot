@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SolicitudRepository extends JpaRepository<SolicitudEntity, Long>{
     List<SolicitudEntity> findAllByOrderByApplicationDateAsc();
+    List<SolicitudEntity> findByAtendidaFalseOrderByApplicationDateAsc();
 }

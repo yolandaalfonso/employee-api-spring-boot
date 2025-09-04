@@ -1,10 +1,9 @@
 package dev.yolanda.employeeAPI;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import java.time.LocalDate;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,8 +17,8 @@ public class SolicitudRepositoryTest {
     
     @Test
     void testFindAllByOrderByApplicationDateAsc() {
-        SolicitudEntity s1 = new SolicitudEntity("Ana", LocalDate.of(2025, 1, 10), "vacaciones", "descanso");
-        SolicitudEntity s2 = new SolicitudEntity("Luis", LocalDate.of(2025, 1, 5), "soporte", "ordenador roto");
+        SolicitudEntity s1 = new SolicitudEntity(1L, "Ana", LocalDate.of(2025, 1, 10), "vacaciones", "descanso");
+        SolicitudEntity s2 = new SolicitudEntity(2L, "Luis", LocalDate.of(2025, 1, 5), "soporte", "ordenador roto");
 
         repository.save(s1);
         repository.save(s2);
