@@ -30,6 +30,13 @@ public class SolicitudController {
         return service.getEntities();
     }
 
+    @GetMapping("")
+    public List<SolicitudDTOResponse> indexOrdered() {
+
+        // class -> json = serializar . json -> class = deserializar
+        return service.getEntitiesOrdered();
+    }
+
     @PostMapping("")
     public ResponseEntity<SolicitudDTOResponse> storeEntity(@RequestBody SolicitudDTORequest dtoRequest) {
         if (dtoRequest.applicantName().isBlank()) return ResponseEntity.badRequest().build();

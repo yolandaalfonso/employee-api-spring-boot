@@ -6,4 +6,5 @@ public interface IGenericService<T, S> {
     public List<T> getEntities();
     public T storeEntity(S dto);
     //public T showById(Long id);
+    List<T> getEntitiesOrdered();
 }

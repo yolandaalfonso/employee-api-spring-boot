@@ -21,6 +21,7 @@ public class SolicitudEntity {
     private String subject;
     private String description;
 
+
     
     public SolicitudEntity() {
     }
