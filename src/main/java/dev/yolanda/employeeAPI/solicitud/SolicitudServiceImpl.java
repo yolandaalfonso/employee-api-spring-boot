@@ -65,6 +65,8 @@ public class SolicitudServiceImpl implements IGenericService<SolicitudDTORespons
         return SolicitudMapper.toDTO(updated);
     }
 
+    // 
+    
     //@Override
     //public SolicitudDTOResponse showById(Long id) {
         //SolicitudEntity solicitud = repository.findById(id).orElseThrow(() -> new SolicitudExceptionNotFound("Solicitud no encontrada. Id " + id + " no existe."));

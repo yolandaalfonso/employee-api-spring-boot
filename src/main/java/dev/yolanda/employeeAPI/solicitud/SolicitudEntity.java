@@ -1,7 +1,11 @@
 package dev.yolanda.employeeAPI.solicitud;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
+import org.hibernate.annotations.ManyToAny;
+
+import dev.yolanda.employeeAPI.technician.TechnicianEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,8 +26,13 @@ public class SolicitudEntity {
     private String description;
 
 
+    @ManyToAny
+    private TechnicianEntity atendidoPor;
     private boolean atendida = false;
-    private String atendidoPor;
+
+    private LocalDateTime fechaAtencion;
+
+    private LocalDateTime fechaEdicion;
 
 
 

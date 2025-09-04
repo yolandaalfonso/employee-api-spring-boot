@@ -33,7 +33,7 @@ public class SolicitudController {
         return service.getEntities();
     }
 
-    @GetMapping("")
+    @GetMapping("/ordered")
     public List<SolicitudDTOResponse> indexOrdered() {
 
         // class -> json = serializar . json -> class = deserializar
@@ -65,6 +65,8 @@ public class SolicitudController {
     ) {
         return service.marcarComoAtendida(id, tecnico);
     }
+
+    
 
     //@GetMapping("/{id}")
     //public ResponseEntity<SolicitudDTOResponse> show(@PathVariable("id") Long id) {
