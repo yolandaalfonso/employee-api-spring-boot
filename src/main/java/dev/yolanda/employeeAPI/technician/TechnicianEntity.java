@@ -13,4 +13,31 @@ public class TechnicianEntity {
     private Long id;
 
     private String technicianName;
+
+    public TechnicianEntity() {
+    }
+
+    public TechnicianEntity(String technicianName) {
+        this.technicianName = technicianName;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTechnicianName() {
+        return technicianName;
+    }
+
+    public void setTechnicianName(String technicianName) {
+        this.technicianName = technicianName;
+    }
+
+    
+
+    
 }
