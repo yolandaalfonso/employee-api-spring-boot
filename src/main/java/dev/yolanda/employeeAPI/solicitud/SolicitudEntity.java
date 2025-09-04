@@ -26,12 +26,14 @@ public class SolicitudEntity {
     private String description;
 
 
-    @ManyToAny
-    private TechnicianEntity atendidoPor;
     private boolean atendida = false;
 
-    private LocalDateTime fechaAtencion;
 
+    @ManyToAny
+    private TechnicianEntity atendidoPor;
+    
+
+    private LocalDateTime fechaAtencion;
     private LocalDateTime fechaEdicion;
 
 
@@ -106,15 +108,32 @@ public class SolicitudEntity {
     }
 
 
-    public String getAtendidoPor() {
+    public TechnicianEntity getAtendidoPor() {
         return atendidoPor;
     }
 
 
-    public void setAtendidoPor(String atendidoPor) {
+    public void setAtendidoPor(TechnicianEntity atendidoPor) {
         this.atendidoPor = atendidoPor;
     }
 
-    
+    public LocalDateTime getFechaAtencion() {
+        return fechaAtencion;
+    }
+
+
+    public void setFechaAtencion(LocalDateTime fechaAtencion) {
+        this.fechaAtencion = fechaAtencion;
+    }
+
+
+    public LocalDateTime getFechaEdicion() {
+        return fechaEdicion;
+    }
+
+
+    public void setFechaEdicion(LocalDateTime fechaEdicion) {
+        this.fechaEdicion = fechaEdicion;
+    }    
 
 }
