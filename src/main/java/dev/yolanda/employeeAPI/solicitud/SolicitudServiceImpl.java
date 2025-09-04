@@ -38,6 +38,33 @@ public class SolicitudServiceImpl implements IGenericService<SolicitudDTORespons
         return SolicitudMapper.toDTO(solicitudStored) ;
     }
 
+    @Override
+    public List<SolicitudDTOResponse> getEntitiesOrdered() {
+        return repository.findAllByOrderByApplicationDateAsc()
+                         .stream()
+                         .map(SolicitudMapper::toDTO)
+                         .toList();
+    }
+
+    public List<SolicitudDTOResponse> getPendientes() {
+        return repository.findByAtendidaFalseOrderByApplicationDateAsc()
+                         .stream()
+                         .map(SolicitudMapper::toDTO)
+                         .toList();
+    }
+
+    @Override
+    public SolicitudDTOResponse marcarComoAtendida(Long id, String tecnico) {
+        SolicitudEntity solicitud = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Solicitud no encontrada con id " + id));
+
+        solicitud.setAtendida(true);
+        solicitud.setAtendidoPor(tecnico);
+
+        SolicitudEntity updated = repository.save(solicitud);
+        return SolicitudMapper.toDTO(updated);
+    }
+
     //@Override
     //public SolicitudDTOResponse showById(Long id) {
         //SolicitudEntity solicitud = repository.findById(id).orElseThrow(() -> new SolicitudExceptionNotFound("Solicitud no encontrada. Id " + id + " no existe."));

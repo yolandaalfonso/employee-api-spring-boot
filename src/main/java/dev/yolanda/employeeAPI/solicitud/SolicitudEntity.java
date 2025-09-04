@@ -21,7 +21,12 @@ public class SolicitudEntity {
     private String subject;
     private String description;
 
-    
+
+    private boolean atendida = false;
+    private String atendidoPor;
+
+
+
     public SolicitudEntity() {
     }
 
@@ -80,6 +85,25 @@ public class SolicitudEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public boolean isAtendida() {
+        return atendida;
+    }
+
+
+    public void setAtendida(boolean atendida) {
+        this.atendida = atendida;
+    }
+
+
+    public String getAtendidoPor() {
+        return atendidoPor;
+    }
+
+
+    public void setAtendidoPor(String atendidoPor) {
+        this.atendidoPor = atendidoPor;
     }
 
     
