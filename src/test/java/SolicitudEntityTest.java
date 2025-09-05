@@ -1,15 +1,10 @@
-import static org.assertj.core.api.Assertions.assertThat;
+import java.time.LocalDate;
+
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
-
-import java.time.LocalDate;
-
 import org.junit.jupiter.api.Test;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
 
 import dev.yolanda.employeeAPI.solicitud.SolicitudEntity;
 
@@ -26,7 +21,7 @@ public class SolicitudEntityTest {
         );
 
         assertThat(solicitud, is(instanceOf(SolicitudEntity.class)));
-        assertThat(solicitud.getClass().getDeclaredFields().length, is(equalTo(5)));
+        assertThat(solicitud.getClass().getDeclaredFields().length, is(equalTo(9)));
 
         assertThat(solicitud.getApplicantName(), is("Juan"));
         assertThat(solicitud.getSubject(), is("vacaciones"));
