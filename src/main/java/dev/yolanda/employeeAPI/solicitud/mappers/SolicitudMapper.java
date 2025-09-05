@@ -26,7 +26,8 @@ public class SolicitudMapper {
             entity.getApplicationDate(),
             entity.getSubject(),
             entity.getDescription(),
-            entity.getAtendidoPor() != null ? entity.getAtendidoPor().getTechnicianName() : null,
+            entity.isAtendida(),
+            entity.getAtendidaPor() != null ? entity.getAtendidaPor().getTechnicianName() : null,
             entity.getFechaAtencion(),
             entity.getFechaEdicion()
         );
@@ -43,7 +44,7 @@ public class SolicitudMapper {
         // Si se pasa un técnico, marcamos como atendida
         if (tecnico != null) {
             entity.setAtendida(true);
-            entity.setAtendidoPor(tecnico);
+            entity.setAtendidaPor(tecnico);
             entity.setFechaAtencion(LocalDateTime.now());
         }
 

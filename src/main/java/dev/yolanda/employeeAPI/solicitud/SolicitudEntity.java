@@ -3,13 +3,12 @@ package dev.yolanda.employeeAPI.solicitud;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import org.hibernate.annotations.ManyToAny;
-
 import dev.yolanda.employeeAPI.technician.TechnicianEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -29,8 +28,8 @@ public class SolicitudEntity {
     private boolean atendida = false;
 
 
-    @ManyToAny
-    private TechnicianEntity atendidoPor;
+    @ManyToOne
+    private TechnicianEntity atendidaPor;
     
 
     private LocalDateTime fechaAtencion;
@@ -108,13 +107,13 @@ public class SolicitudEntity {
     }
 
 
-    public TechnicianEntity getAtendidoPor() {
-        return atendidoPor;
+    public TechnicianEntity getAtendidaPor() {
+        return atendidaPor;
     }
 
 
-    public void setAtendidoPor(TechnicianEntity atendidoPor) {
-        this.atendidoPor = atendidoPor;
+    public void setAtendidaPor(TechnicianEntity atendidaPor) {
+        this.atendidaPor = atendidaPor;
     }
 
     public LocalDateTime getFechaAtencion() {
@@ -135,5 +134,9 @@ public class SolicitudEntity {
     public void setFechaEdicion(LocalDateTime fechaEdicion) {
         this.fechaEdicion = fechaEdicion;
     }    
+
+    public boolean isPendiente() {
+        return !this.atendida;
+    }
 
 }
