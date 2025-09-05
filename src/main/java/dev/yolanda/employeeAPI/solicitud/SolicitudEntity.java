@@ -3,13 +3,12 @@ package dev.yolanda.employeeAPI.solicitud;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import org.hibernate.annotations.ManyToAny;
-
 import dev.yolanda.employeeAPI.technician.TechnicianEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,12 +25,14 @@ public class SolicitudEntity {
     private String description;
 
 
-    @ManyToAny
-    private TechnicianEntity atendidoPor;
     private boolean atendida = false;
 
-    private LocalDateTime fechaAtencion;
 
+    @ManyToOne
+    private TechnicianEntity atendidaPor;
+    
+
+    private LocalDateTime fechaAtencion;
     private LocalDateTime fechaEdicion;
 
 
@@ -106,15 +107,36 @@ public class SolicitudEntity {
     }
 
 
-    public String getAtendidoPor() {
-        return atendidoPor;
+    public TechnicianEntity getAtendidaPor() {
+        return atendidaPor;
     }
 
 
-    public void setAtendidoPor(String atendidoPor) {
-        this.atendidoPor = atendidoPor;
+    public void setAtendidaPor(TechnicianEntity atendidaPor) {
+        this.atendidaPor = atendidaPor;
     }
 
-    
+    public LocalDateTime getFechaAtencion() {
+        return fechaAtencion;
+    }
+
+
+    public void setFechaAtencion(LocalDateTime fechaAtencion) {
+        this.fechaAtencion = fechaAtencion;
+    }
+
+
+    public LocalDateTime getFechaEdicion() {
+        return fechaEdicion;
+    }
+
+
+    public void setFechaEdicion(LocalDateTime fechaEdicion) {
+        this.fechaEdicion = fechaEdicion;
+    }    
+
+    public boolean isPendiente() {
+        return !this.atendida;
+    }
 
 }
