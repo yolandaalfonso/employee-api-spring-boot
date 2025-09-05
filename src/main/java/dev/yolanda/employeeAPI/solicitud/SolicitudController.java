@@ -3,6 +3,7 @@ package dev.yolanda.employeeAPI.solicitud;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -72,5 +73,31 @@ public class SolicitudController {
         SolicitudDTOResponse solicitud = service.showById(id);
         return ResponseEntity.ok().body(solicitud);
     }
+
+    /* @PutMapping("/{id}")
+    public ResponseEntity<SolicitudDTOResponse> updateSolicitud(
+            @PathVariable Long id,
+            @RequestBody SolicitudDTORequest dtoRequest
+    ) {
+        SolicitudDTOResponse updated = service.updateSolicitud(id, dtoRequest);
+        return ResponseEntity.ok(updated);
+    } */
+
+    @PutMapping("/{id}")
+    public SolicitudDTOResponse updateSolicitud(
+            @PathVariable Long id,
+            @RequestBody SolicitudDTORequest dtoRequest
+    ) {
+        return service.updateSolicitud(id, dtoRequest);
+    }
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteIfAtendida(@PathVariable Long id) {
+        service.deleteIfAtendida(id);
+        return ResponseEntity.noContent().build();
+    }
+
+
 
 }

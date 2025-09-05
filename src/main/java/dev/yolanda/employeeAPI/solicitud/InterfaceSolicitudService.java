@@ -12,4 +12,9 @@ public interface InterfaceSolicitudService extends IGenericService<SolicitudDTOR
     List<SolicitudDTOResponse> getEntitiesOrdered();
     List<SolicitudDTOResponse> getPendientes();
     SolicitudDTOResponse marcarComoAtendida(Long id, Long technicianId);
+    SolicitudDTOResponse updateSolicitud(Long id, SolicitudDTORequest dtoRequest);
+
+    void deleteIfAtendida(Long id);
+
+
 }

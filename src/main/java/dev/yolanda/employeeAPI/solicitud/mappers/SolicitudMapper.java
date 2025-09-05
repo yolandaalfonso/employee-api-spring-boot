@@ -15,6 +15,10 @@ public class SolicitudMapper {
     public static SolicitudEntity toEntity(SolicitudDTORequest dtoRequest) {
         SolicitudEntity solicitud = new SolicitudEntity();
         solicitud.setApplicantName(dtoRequest.applicantName());
+        solicitud.setApplicationDate(dtoRequest.applicationDate());
+        solicitud.setSubject(dtoRequest.subject());
+        solicitud.setDescription(dtoRequest.description());
+        solicitud.setAtendida(false); // al crear siempre pendiente
 
         return solicitud;
     }

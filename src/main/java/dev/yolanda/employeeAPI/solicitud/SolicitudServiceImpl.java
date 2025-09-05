@@ -95,4 +95,62 @@ public class SolicitudServiceImpl implements InterfaceSolicitudService{
         return SolicitudMapper.toDTO(solicitud);
     }
 
+    /* @Override
+    public SolicitudDTOResponse updateSolicitud(Long id, SolicitudDTORequest dtoRequest) {
+    SolicitudEntity solicitud = repository.findById(id)
+        .orElseThrow(() -> new SolicitudNotFoundExceptions("Solicitud no encontrada con id " + id));
+
+    solicitud.setApplicantName(dtoRequest.applicantName());
+    solicitud.setApplicationDate(dtoRequest.applicationDate());
+    solicitud.setSubject(dtoRequest.subject());
+    solicitud.setDescription(dtoRequest.description());
+    solicitud.setFechaEdicion(LocalDateTime.now());
+
+    // Si viene un técnico nuevo en el request, lo buscamos
+    if (dtoRequest.technicianId() != null) {
+        TechnicianEntity tecnico = technicianRepository.findById(dtoRequest.technicianId())
+            .orElseThrow(() -> new RuntimeException("Técnico no encontrado con id " + dtoRequest.technicianId()));
+        solicitud.setAtendidaPor(tecnico);
+    }
+
+    SolicitudEntity updated = repository.save(solicitud);
+    return SolicitudMapper.toDTO(updated);
+    } */
+
+    @Override
+    public SolicitudDTOResponse updateSolicitud(Long id, SolicitudDTORequest dtoRequest) {
+    SolicitudEntity solicitud = repository.findById(id)
+            .orElseThrow(() -> new SolicitudNotFoundExceptions("Solicitud no encontrada"));
+
+    TechnicianEntity tecnico = null;
+    if (dtoRequest.technicianId() != null) {
+        tecnico = technicianRepository.findById(dtoRequest.technicianId())
+                .orElseThrow(() -> new RuntimeException("Técnico no encontrado"));
+    }
+
+    SolicitudMapper.updateEntity(solicitud, dtoRequest, tecnico);
+
+    SolicitudEntity updated = repository.save(solicitud);
+    return SolicitudMapper.toDTO(updated);
+}
+
+
+    @Override
+    public void deleteIfAtendida(Long id) {
+    SolicitudEntity solicitud = repository.findById(id)
+            .orElseThrow(() -> new SolicitudNotFoundExceptions("Solicitud no encontrada"));
+
+    if (!solicitud.isAtendida()) {
+        throw new RuntimeException("No se puede eliminar una solicitud que aún está pendiente");
+    }
+
+    repository.delete(solicitud);
+}
+
+
+    
+
+
+
+
 }
