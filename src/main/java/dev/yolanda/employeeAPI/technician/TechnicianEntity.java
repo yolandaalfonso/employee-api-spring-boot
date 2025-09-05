@@ -21,6 +21,12 @@ public class TechnicianEntity {
         this.technicianName = technicianName;
     }
 
+    public TechnicianEntity(Long id, String technicianName) {
+        this.id = id;
+        this.technicianName = technicianName;
+    }
+    
+
     public Long getId() {
         return id;
     }
